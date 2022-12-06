@@ -1,7 +1,9 @@
+import { MainLayout } from "./layout/MainLayout";
+
 function App() {
   return (
     <div className="App">
-      <h1>Blog app</h1>
+      <MainLayout />
     </div>
   );
 }
