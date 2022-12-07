@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 import {
-  bordeRadius,
+  borderRadius,
   colors,
   fontSize,
   fontWeight,
@@ -14,9 +14,10 @@ export const StyledNavBarDiv = styled.div`
   left: 0;
   top: 0;
   right: 0;
-  height: 50px;
+  height: ${sizes.navbarHeight};
   background-color: ${colors.primary};
   color: ${colors.textBright};
+  z-index: 100;
 `;
 
 export const StyledContainerDiv = styled.div`
@@ -26,8 +27,8 @@ export const StyledContainerDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-left: ${spacing.spacingLarge};
-  padding-right: ${spacing.spacingLarge};
+  padding-left: ${spacing.large};
+  padding-right: ${spacing.large};
   width: ${sizes.mainContainerWidth};
   max-width: ${sizes.mainContainerMaxWidth};
   & > div {
@@ -61,7 +62,7 @@ export const StyledNavList = styled.ul`
       padding: 8px 24px;
       background-color: ${colors.light};
       color: ${colors.primary};
-      border-radius: ${bordeRadius.medium};
+      border-radius: ${borderRadius.medium};
       font-weight: bold;
     }
     & > a.signUpButton:hover {

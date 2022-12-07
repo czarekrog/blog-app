@@ -9,14 +9,15 @@ export const colors = {
 };
 
 export const spacing = {
-  spacingSmall: "4px",
-  spacingMedium: "8px",
-  spacingLarge: "16px",
+  small: "4px",
+  medium: "8px",
+  large: "16px",
 };
 
 export const sizes = {
   mainContainerWidth: "1040px",
   mainContainerMaxWidth: "100%",
+  navbarHeight: "50px",
 };
 
 export const fontWeight = {
@@ -33,7 +34,7 @@ export const fontSize = {
   big: "24px",
 };
 
-export const bordeRadius = {
+export const borderRadius = {
   small: "5px",
   medium: "10px",
   big: "20px",
