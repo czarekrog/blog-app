@@ -5,11 +5,11 @@ import { StyledMainContainer } from "./StyledMainLayout";
 
 export const MainLayout = () => {
   return (
-    <div>
+    <>
       <NavBar />
       <StyledMainContainer>
         <Outlet />
       </StyledMainContainer>
-    </div>
+    </>
   );
 };

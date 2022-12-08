@@ -1,6 +1,11 @@
 import styled from "@emotion/styled";
 import { borderRadius, colors, fontWeight } from "../../../constants/styling";
 
+export const linkStyles = {
+  color: `${colors.primary}`,
+  textDecoration: "none",
+};
+
 export const StyledContainer = styled.div``;
 
 export const StyledPostPhoto = styled.img`

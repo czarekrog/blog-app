@@ -1,5 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { Post } from "../../../types/Post";
 import {
+  linkStyles,
   StyledDescriptionSpan,
   StyledFeaturedPost,
   StyledFeaturedSpan,
@@ -7,25 +10,21 @@ import {
 } from "./StyledFeaturedPost";
 
 interface Props {
-  bgImage: string;
-  title: string;
-  shortDesc: string;
+  post: Post;
   isCurrentSlide: boolean;
 }
 
-export const FeaturedPost = ({
-  bgImage,
-  title,
-  shortDesc,
-  isCurrentSlide,
-}: Props) => {
+export const FeaturedPost = ({ post, isCurrentSlide }: Props) => {
+  const { id, bgImage, title, shortDesc } = post;
   return (
-    <StyledFeaturedPost bgImage={bgImage} isCurrentSlide={isCurrentSlide}>
-      <div>
-        <StyledFeaturedSpan>FEATURED</StyledFeaturedSpan>
-        <StyledTitleSpan>{title}</StyledTitleSpan>
-        <StyledDescriptionSpan>{shortDesc}</StyledDescriptionSpan>
-      </div>
-    </StyledFeaturedPost>
+    <Link to={`post/${id}`} style={linkStyles} state={{ post: post }}>
+      <StyledFeaturedPost bgImage={bgImage} isCurrentSlide={isCurrentSlide}>
+        <div>
+          <StyledFeaturedSpan>FEATURED</StyledFeaturedSpan>
+          <StyledTitleSpan>{title}</StyledTitleSpan>
+          <StyledDescriptionSpan>{shortDesc}</StyledDescriptionSpan>
+        </div>
+      </StyledFeaturedPost>
+    </Link>
   );
 };

@@ -15,13 +15,7 @@ export const RecentPosts = () => {
     return (
       <>
         {posts.map((post) => (
-          <SingleRecentPost
-            key={post.id}
-            id={post.id}
-            image={post.bgImage}
-            title={post.title}
-            shortDesc={post.shortDesc}
-          />
+          <SingleRecentPost key={post.id} post={post} />
         ))}
       </>
     );

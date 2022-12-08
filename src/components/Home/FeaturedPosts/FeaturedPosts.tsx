@@ -52,9 +52,7 @@ export const FeaturedPosts = () => {
       {posts.map((post, index) => (
         <FeaturedPost
           key={post.id}
-          bgImage={post.bgImage}
-          title={post.title}
-          shortDesc={post.shortDesc}
+          post={post}
           isCurrentSlide={index === activeSlide}
         />
       ))}

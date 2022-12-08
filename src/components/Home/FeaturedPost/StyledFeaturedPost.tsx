@@ -6,6 +6,11 @@ interface FeaturedPostProps {
   isCurrentSlide: boolean;
 }
 
+export const linkStyles = {
+  color: `${colors.primary}`,
+  textDecoration: "none",
+};
+
 export const StyledFeaturedPost = styled.div<FeaturedPostProps>`
   background: url(${(props) => props.bgImage}) rgba(0, 0, 0, 0.3);
   background-size: cover;
