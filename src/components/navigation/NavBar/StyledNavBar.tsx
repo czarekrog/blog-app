@@ -15,8 +15,8 @@ export const StyledNavBarDiv = styled.div`
   top: 0;
   right: 0;
   height: ${sizes.navbarHeight};
-  background-color: ${colors.primary};
-  color: ${colors.textBright};
+  background-color: #fff;
+  color: ${colors.text};
   z-index: 100;
 `;
 
@@ -47,7 +47,7 @@ export const StyledNavList = styled.ul`
   & > li {
     & > a {
       display: block;
-      color: ${colors.textBright};
+      color: ${colors.text};
       text-align: center;
       padding: 15px 24px;
       text-decoration: none;
@@ -55,13 +55,13 @@ export const StyledNavList = styled.ul`
       font-weight: ${fontWeight.medium};
     }
     & > a:hover {
-      background-color: ${colors.primaryBrighter};
+      font-weight: ${fontWeight.bold};
     }
     & > a.signUpButton {
       margin-top: 7px;
       padding: 8px 24px;
-      background-color: ${colors.light};
-      color: ${colors.primary};
+      background-color: ${colors.primary};
+      color: ${colors.textBright};
       border-radius: ${borderRadius.medium};
       font-weight: bold;
     }

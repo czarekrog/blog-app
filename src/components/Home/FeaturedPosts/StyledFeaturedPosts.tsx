@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { borderRadius, colors } from "../../constants/styling";
+import { borderRadius, colors } from "../../../constants/styling";
 
 interface NavigationProps {
   visible: boolean;
@@ -14,7 +14,6 @@ export const StyledFeaturedPostsDiv = styled.div`
   height: 600px;
   overflow: hidden;
   position: relative;
-  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
 `;
 
 export const StyledNavigationLeft = styled.div<NavigationProps>`

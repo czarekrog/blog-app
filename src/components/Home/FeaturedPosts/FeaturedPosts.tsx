@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "../../app/store";
+import { RootState } from "../../../app/store";
 import { FeaturedPost } from "../FeaturedPost/FeaturedPost";
 import {
   StyledFeaturedPostsDiv,
@@ -43,8 +43,6 @@ export const FeaturedPosts = () => {
     }, 8000);
     return () => clearInterval(interval);
   }, [activeSlide, handleNextSlide]);
-
-  console.log(activeSlide);
 
   return (
     <StyledFeaturedPostsDiv
