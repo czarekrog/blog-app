@@ -55,7 +55,7 @@ export const StyledNavList = styled.ul`
       font-weight: ${fontWeight.medium};
     }
     & > a:hover {
-      font-weight: ${fontWeight.bold};
+      text-decoration: underline;
     }
     & > a.signUpButton {
       margin-top: 7px;
@@ -67,6 +67,7 @@ export const StyledNavList = styled.ul`
     }
     & > a.signUpButton:hover {
       filter: brightness(1.3);
+      text-decoration: none;
     }
   }
   &.userNavigation {

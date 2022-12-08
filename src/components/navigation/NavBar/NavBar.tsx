@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   StyledContainerDiv,
   StyledNavBarDiv,
@@ -15,25 +16,25 @@ export const NavBar = () => {
         <div>
           <StyledNavList>
             <li>
-              <a href="/">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <a href="/">About</a>
+              <Link to="/about">About</Link>
             </li>
             <li>
-              <a href="/">Contact</a>
+              <Link to="/contact">Contact</Link>
             </li>
           </StyledNavList>
         </div>
         <div>
           <StyledNavList className="userNavigation">
             <li>
-              <a href="/">Sign in</a>
+              <Link to="/sign-in">Sign in</Link>
             </li>
             <li>
-              <a className="signUpButton" href="/">
+              <Link to="/sign-up" className="signUpButton">
                 Sign Up
-              </a>
+              </Link>
             </li>
           </StyledNavList>
         </div>
