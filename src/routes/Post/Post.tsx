@@ -28,7 +28,7 @@ export const Post = () => {
       </StyledHeading>
       <StyledEstimateTimeParagraph>
         Estimated read time: {getReadTime()}{" "}
-        {getReadTime() > 1 ? "minutes" : "minute"}
+        {getReadTime() > 1.5 ? "minutes" : "minute"}
       </StyledEstimateTimeParagraph>
       <StyledSeparatorLine />
       <StyledContent>{post.content}</StyledContent>

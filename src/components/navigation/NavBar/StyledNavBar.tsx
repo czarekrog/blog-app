@@ -66,7 +66,7 @@ export const StyledNavList = styled.ul`
       font-weight: bold;
     }
     & > a.signUpButton:hover {
-      filter: brightness(1.3);
+      background-color: ${colors.primaryBrighter};
       text-decoration: none;
     }
   }

@@ -2,7 +2,7 @@
 
 export const colors = {
   primary: "#111",
-  primaryBrighter: "#222",
+  primaryBrighter: "#333",
   light: "#eee",
   text: "#111",
   textBright: "#fff",
