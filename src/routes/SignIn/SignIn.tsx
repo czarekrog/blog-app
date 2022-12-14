@@ -1,6 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { SignInForm } from "../../components/SignIn/SignInForm/SignInForm";
+import { useAuth } from "../../hooks/user/useAuth";
 import {
   StyledBottomSection,
   StyledContainer,
@@ -9,6 +10,15 @@ import {
 } from "./StyledSignIn";
 
 export const SignIn = () => {
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/");
+    }
+  }, [isAuthenticated, navigate]);
+
   return (
     <StyledContainer>
       <StyledFormContainer>

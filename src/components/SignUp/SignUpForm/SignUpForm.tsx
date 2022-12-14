@@ -1,7 +1,9 @@
 import { useFormik } from "formik";
+import { useSignUp } from "../../../hooks/user/useSignUp";
 import { StyledSignUpFormContainer } from "./StyledSignUpForm";
 
 export const SignUpForm = () => {
+  const { signUp } = useSignUp();
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -11,7 +13,11 @@ export const SignUpForm = () => {
       termsAndConditions: false,
     },
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      signUp({
+        email: values.email,
+        password: values.password,
+        name: values.name,
+      });
     },
   });
   return (

@@ -1,9 +1,14 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import featuredPostsReducer from "../features/featuredPostsSlice";
 import postsReducer from "../features/postsSlice";
+import userReducer from "../features/userSlice";
 
 export const store = configureStore({
-  reducer: { featuredPosts: featuredPostsReducer, posts: postsReducer },
+  reducer: {
+    featuredPosts: featuredPostsReducer,
+    posts: postsReducer,
+    user: userReducer,
+  },
 });
 
 export type AppDispatch = typeof store.dispatch;

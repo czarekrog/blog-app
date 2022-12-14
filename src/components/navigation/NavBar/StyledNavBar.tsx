@@ -70,8 +70,13 @@ export const StyledNavList = styled.ul`
       text-decoration: none;
     }
   }
+
   &.userNavigation {
     display: flex;
     justify-content: end;
+  }
+
+  .signOut {
+    cursor: pointer;
   }
 `;

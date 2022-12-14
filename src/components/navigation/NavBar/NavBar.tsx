@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../../hooks/user/useAuth";
 import {
   StyledContainerDiv,
   StyledNavBarDiv,
@@ -7,6 +8,12 @@ import {
 } from "./StyledNavBar";
 
 export const NavBar = () => {
+  const { isAuthenticated, signOut } = useAuth();
+
+  const handleSignOut = useCallback(() => {
+    signOut();
+  }, [signOut]);
+
   return (
     <StyledNavBarDiv>
       <StyledContainerDiv>
@@ -28,14 +35,22 @@ export const NavBar = () => {
         </div>
         <div>
           <StyledNavList className="userNavigation">
-            <li>
-              <Link to="/sign-in">Sign in</Link>
-            </li>
-            <li>
-              <Link to="/sign-up" className="signUpButton">
-                Sign Up
-              </Link>
-            </li>
+            {!isAuthenticated ? (
+              <>
+                <li>
+                  <Link to="/sign-in">Sign in</Link>
+                </li>
+                <li>
+                  <Link to="/sign-up" className="signUpButton">
+                    Sign Up
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <li className="signOut" onClick={handleSignOut}>
+                Sign Out
+              </li>
+            )}
           </StyledNavList>
         </div>
       </StyledContainerDiv>
