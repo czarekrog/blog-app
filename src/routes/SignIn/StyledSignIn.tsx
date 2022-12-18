@@ -10,8 +10,9 @@ export const StyledContainer = styled.div`
 `;
 
 export const StyledFormContainer = styled.div`
-  width: 250px;
-  max-width: 90%;
+  box-sizing: border-box;
+  display: block;
+  width: 350px;
   padding: 16px;
 `;
 
@@ -41,5 +42,5 @@ export const StyledBottomSection = styled.div`
 export const StyledDivider = styled.hr`
   width: 80%;
   border-top: 1px solid #ddd;
-  margin: 16px;
+  margin: 16px auto;
 `;

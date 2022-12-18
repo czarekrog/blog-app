@@ -9,4 +9,5 @@ export const StyledMainContainer = styled.div`
   margin-left: auto;
   margin-right: auto;
   padding: 16px;
+  box-sizing: border-box;
 `;

@@ -71,6 +71,12 @@ export const StyledNavList = styled.ul`
     }
   }
 
+  &.mainNavigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
   &.userNavigation {
     display: flex;
     justify-content: end;
@@ -78,5 +84,9 @@ export const StyledNavList = styled.ul`
 
   .signOut {
     cursor: pointer;
+  }
+
+  .signOut:hover {
+    text-decoration: underline;
   }
 `;

@@ -1,14 +1,16 @@
 import React from "react";
 import { useFormik } from "formik";
 import { StyledForgotPasswordFormContainer } from "./StyledForgotPasswordForm";
+import { useResetPassword } from "../../../hooks/user/useResetPassword";
 
 export const ForgotPasswordForm = () => {
+  const { resetPassword } = useResetPassword();
   const formik = useFormik({
     initialValues: {
       email: "",
     },
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      resetPassword({ email: values.email });
     },
   });
   return (

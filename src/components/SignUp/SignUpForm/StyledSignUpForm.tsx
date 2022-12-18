@@ -2,8 +2,8 @@ import styled from "@emotion/styled";
 import { borderRadius, colors, fontWeight } from "../../../constants/styling";
 
 export const StyledSignUpFormContainer = styled.div`
-  width: 300px;
-  max-width: 90%;
+  box-sizing: border-box;
+  width: 100%;
   padding: 16px;
 
   & > form > label {
@@ -21,6 +21,7 @@ export const StyledSignUpFormContainer = styled.div`
     width: 100%;
     border-radius: ${borderRadius.small};
     border: 1px solid #ddd;
+    box-sizing: border-box;
   }
 
   & > form > button {
@@ -37,5 +38,13 @@ export const StyledSignUpFormContainer = styled.div`
     &:hover {
       background-color: ${colors.primaryBrighter};
     }
+  }
+
+  & > form > .error-message {
+    color: red;
+    font-weight: 600;
+    font-size: 12px;
+    margin-bottom: 12px;
+    margin-top: -12px;
   }
 `;

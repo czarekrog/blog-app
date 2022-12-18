@@ -1,9 +1,11 @@
 import { useDispatch } from "react-redux";
-import { signIn, handleError } from "../../features/userSlice";
+import { signIn } from "../../features/userSlice";
 import { firebaseAuth } from "../../libs/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import getUserData from "../../utils/getUserData";
+import { useAlert } from "../alert/useAlert";
+import { AlertType } from "../../components/Alert/Alert";
 
 interface SignInProps {
   email: string;
@@ -13,6 +15,7 @@ interface SignInProps {
 export const useSignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { showAlert } = useAlert();
 
   const signInUser = ({ email, password }: SignInProps) => {
     signInWithEmailAndPassword(firebaseAuth, email, password)
@@ -22,7 +25,8 @@ export const useSignIn = () => {
         navigate("/");
       })
       .catch((error) => {
-        dispatch(handleError(error.code));
+        // dispatch(handleError(error.code));
+        showAlert({ code: error.code, type: AlertType.error });
       });
   };
 

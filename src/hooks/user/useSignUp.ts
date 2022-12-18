@@ -1,10 +1,10 @@
-import { useDispatch } from "react-redux";
 import { firebaseAuth, firestore } from "../../libs/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { handleError } from "../../features/userSlice";
 import { doc, setDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import checkUsernameAvailable from "../../utils/checkUsernameAvailable";
+import { useAlert } from "../alert/useAlert";
+import { AlertType } from "../../components/Alert/Alert";
 
 interface SignUpProps {
   email: string;
@@ -13,8 +13,8 @@ interface SignUpProps {
 }
 
 export const useSignUp = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { showAlert } = useAlert();
 
   const signUp = async ({ email, password, name }: SignUpProps) => {
     const usernameAvailable = await checkUsernameAvailable({ name });
@@ -26,10 +26,9 @@ export const useSignUp = () => {
           navigate("/");
         })
         .catch((error) => {
-          dispatch(handleError(error.code));
+          showAlert({ code: error.code, type: AlertType.success });
         });
     } else {
-      dispatch(handleError("username-already-in-use"));
     }
   };
 

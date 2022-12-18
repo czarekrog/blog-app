@@ -21,7 +21,7 @@ export const NavBar = () => {
           <span>Logo</span>
         </div>
         <div>
-          <StyledNavList>
+          <StyledNavList className="mainNavigation">
             <li>
               <Link to="/">Home</Link>
             </li>

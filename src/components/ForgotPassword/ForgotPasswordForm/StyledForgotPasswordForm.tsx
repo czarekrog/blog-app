@@ -5,6 +5,8 @@ export const StyledForgotPasswordFormContainer = styled.div`
   width: 300px;
   max-width: 90%;
   padding: 16px;
+  box-sizing: border-box;
+  margin: 0 auto;
 
   & > form > label {
     display: block;
@@ -21,6 +23,7 @@ export const StyledForgotPasswordFormContainer = styled.div`
     width: 100%;
     border-radius: ${borderRadius.small};
     border: 1px solid #ddd;
+    box-sizing: border-box;
   }
 
   & > form > button {
