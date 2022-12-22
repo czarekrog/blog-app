@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { Post } from "../types/Post";
+import { RootState } from "../app/store";
 
 export interface FeaturedPostsState {
   posts: Post[];
@@ -78,5 +79,7 @@ export const postsSlice = createSlice({
 });
 
 export const {} = postsSlice.actions;
+
+export const selectPosts = (state: RootState) => state.posts.posts;
 
 export default postsSlice.reducer;

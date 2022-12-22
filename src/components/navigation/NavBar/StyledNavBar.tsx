@@ -84,6 +84,7 @@ export const StyledNavList = styled.ul`
 
   .signOut {
     cursor: pointer;
+    padding: 15px 12px;
   }
 
   .signOut:hover {

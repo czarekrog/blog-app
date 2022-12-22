@@ -47,9 +47,14 @@ export const NavBar = () => {
                 </li>
               </>
             ) : (
-              <li className="signOut" onClick={handleSignOut}>
-                Sign Out
-              </li>
+              <>
+                <li>
+                  <Link to="/dashboard">Dashboard</Link>
+                </li>
+                <li className="signOut" onClick={handleSignOut}>
+                  Sign Out
+                </li>
+              </>
             )}
           </StyledNavList>
         </div>

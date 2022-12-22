@@ -13,6 +13,10 @@ import { firebaseAuth } from "./libs/firebase";
 import { useDispatch } from "react-redux";
 import { signIn, signOut } from "./features/userSlice";
 import getUserData from "./utils/getUserData";
+import { Dashboard } from "./routes/Dashboard/Dashboard";
+import { DashboardLayout } from "./layout/DashboardLayout";
+import { AddNew } from "./routes/Dashboard/AddNew/AddNew";
+import { EditPost } from "./routes/Dashboard/EditPost/EditPost";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +25,6 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        path: "/",
         element: <Home />,
       },
       {
@@ -33,6 +36,15 @@ const router = createBrowserRouter([
       { path: "/sign-up", element: <SignUp /> },
       { path: "/forgot-password", element: <ForgotPassword /> },
       { path: "/post/:id", element: <Post /> },
+      {
+        path: "/dashboard",
+        element: <DashboardLayout />,
+        children: [
+          { index: true, element: <Dashboard /> },
+          { path: "add-new", element: <AddNew /> },
+          { path: "edit/:id", element: <EditPost /> },
+        ],
+      },
     ],
   },
 ]);
