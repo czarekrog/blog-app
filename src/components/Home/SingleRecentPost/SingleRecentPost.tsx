@@ -15,11 +15,11 @@ interface Props {
 }
 
 export const SingleRecentPost = ({ post }: Props) => {
-  const { id, bgImage, title, shortDesc } = post;
+  const { id, image, title, shortDesc } = post;
   return (
     <StyledContainer>
       <Link to={`/post/${id}`} style={linkStyles} state={{ post: post }}>
-        <StyledPostPhoto src={bgImage} alt="" />
+        <StyledPostPhoto src={image} alt="" />
         <StyledTitleParagraph>{title}</StyledTitleParagraph>
         <StyledShortDescParagraph>{shortDesc}</StyledShortDescParagraph>
         <StyledPostAuthorAndDateParagraph>

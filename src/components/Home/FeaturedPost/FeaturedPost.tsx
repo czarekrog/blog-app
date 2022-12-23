@@ -15,10 +15,10 @@ interface Props {
 }
 
 export const FeaturedPost = ({ post, isCurrentSlide }: Props) => {
-  const { id, bgImage, title, shortDesc } = post;
+  const { id, image, title, shortDesc } = post;
   return (
     <Link to={`post/${id}`} style={linkStyles} state={{ post: post }}>
-      <StyledFeaturedPost bgImage={bgImage} isCurrentSlide={isCurrentSlide}>
+      <StyledFeaturedPost bgImage={image} isCurrentSlide={isCurrentSlide}>
         <div>
           <StyledFeaturedSpan>FEATURED</StyledFeaturedSpan>
           <StyledTitleSpan>{title}</StyledTitleSpan>

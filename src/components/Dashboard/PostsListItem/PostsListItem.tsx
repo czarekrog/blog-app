@@ -14,16 +14,18 @@ interface Props {
 }
 
 export const PostsListItem = ({ post }: Props) => {
-  const { id, bgImage, title, shortDesc } = post;
+  const { id, image, title, shortDesc } = post;
   return (
     <StyledContainer>
-      <img src={bgImage} alt="Post cover" />
+      <img src={image} alt="Post cover" />
       <StyledShortContent>
         <StyledTitle>{title}</StyledTitle>
         <StyledDescription>{shortDesc}</StyledDescription>
       </StyledShortContent>
       <StyledNavigation>
-        <Link to={`edit/${id}`}>Edit</Link>
+        <Link to={`edit/${id}`} state={{ post }}>
+          Edit
+        </Link>
       </StyledNavigation>
     </StyledContainer>
   );

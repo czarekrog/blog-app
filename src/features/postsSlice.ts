@@ -11,7 +11,8 @@ const initialState: FeaturedPostsState = {
   posts: [
     {
       id: "1",
-      bgImage:
+      tags: "some tag, another tag",
+      image:
         "https://images.unsplash.com/photo-1620912189866-474843ba5c14?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2938&q=80",
       title: "Title 1",
       content:
@@ -21,7 +22,8 @@ const initialState: FeaturedPostsState = {
     },
     {
       id: "2",
-      bgImage:
+      tags: "some tag, another tag",
+      image:
         "https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
       title: "Title 2",
       content:
@@ -31,7 +33,8 @@ const initialState: FeaturedPostsState = {
     },
     {
       id: "3",
-      bgImage:
+      tags: "some tag, another tag",
+      image:
         "https://images.unsplash.com/photo-1485217988980-11786ced9454?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
       title: "Title 3",
       content:
@@ -41,7 +44,8 @@ const initialState: FeaturedPostsState = {
     },
     {
       id: "4",
-      bgImage:
+      tags: "some tag, another tag",
+      image:
         "https://images.unsplash.com/photo-1620912189866-474843ba5c14?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2938&q=80",
       title: "Title 4",
       content:
@@ -51,7 +55,8 @@ const initialState: FeaturedPostsState = {
     },
     {
       id: "5",
-      bgImage:
+      tags: "some tag, another tag",
+      image:
         "https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
       title: "Title 5",
       content:
@@ -61,7 +66,8 @@ const initialState: FeaturedPostsState = {
     },
     {
       id: "6",
-      bgImage:
+      tags: "some tag, another tag",
+      image:
         "https://images.unsplash.com/photo-1485217988980-11786ced9454?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
       title: "Title 6",
       content:

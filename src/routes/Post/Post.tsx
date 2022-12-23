@@ -22,7 +22,7 @@ export const Post = () => {
 
   return (
     <StyledContainer>
-      <StyledHeading bgImage={post.bgImage}>
+      <StyledHeading bgImage={post.image}>
         <StyledTitle>{post.title}</StyledTitle>
         <StyledAuthorAndDate>Author &#183; Post Date</StyledAuthorAndDate>
       </StyledHeading>
