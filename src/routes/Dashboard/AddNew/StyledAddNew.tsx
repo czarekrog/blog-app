@@ -11,6 +11,6 @@ export const StyledContainer = styled.div`
 export const StyledFormContainer = styled.div`
   box-sizing: border-box;
   display: block;
-  width: 550px;
+  width: 100%;
   padding: 16px;
 `;

@@ -2,6 +2,7 @@
 import { initializeApp, FirebaseApp } from "firebase/app";
 import { Auth, initializeAuth, browserLocalPersistence } from "firebase/auth";
 import { Firestore, getFirestore } from "firebase/firestore";
+import { FirebaseStorage, getStorage } from "firebase/storage";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -33,4 +34,10 @@ export let firestore = {} as Firestore;
 
 if (typeof window !== "undefined") {
   firestore = getFirestore(app);
+}
+
+export let storage = {} as FirebaseStorage;
+
+if (typeof window !== "undefined") {
+  storage = getStorage(app);
 }

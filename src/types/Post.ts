@@ -5,4 +5,7 @@ export interface Post {
   shortDesc: string;
   content: string;
   image: string;
+  author: string;
+  date: number; //in milliseconds
+  featured: boolean;
 }

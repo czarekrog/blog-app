@@ -1,3 +1,4 @@
+import moment from "moment";
 import React from "react";
 import { Link } from "react-router-dom";
 import { Post } from "../../../types/Post";
@@ -15,7 +16,7 @@ interface Props {
 }
 
 export const SingleRecentPost = ({ post }: Props) => {
-  const { id, image, title, shortDesc } = post;
+  const { id, image, title, shortDesc, author, date } = post;
   return (
     <StyledContainer>
       <Link to={`/post/${id}`} style={linkStyles} state={{ post: post }}>
@@ -23,7 +24,9 @@ export const SingleRecentPost = ({ post }: Props) => {
         <StyledTitleParagraph>{title}</StyledTitleParagraph>
         <StyledShortDescParagraph>{shortDesc}</StyledShortDescParagraph>
         <StyledPostAuthorAndDateParagraph>
-          Post Author &#183; Post Date
+          <>
+            {author} &#183; {moment(date).format("DD.MM.YYYY")}
+          </>
         </StyledPostAuthorAndDateParagraph>
       </Link>
     </StyledContainer>

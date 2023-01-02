@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../app/store";
+import { selectFeaturedPosts } from "../../../features/postsSlice";
 import { FeaturedPost } from "../FeaturedPost/FeaturedPost";
 import {
   StyledFeaturedPostsDiv,
@@ -11,7 +12,7 @@ import {
 export const FeaturedPosts = () => {
   const [navigationVisible, setNavigationVisible] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
-  const posts = useSelector((state: RootState) => state.featuredPosts.posts);
+  const posts = useSelector((state: RootState) => selectFeaturedPosts(state));
 
   const handleMouseEnter = useCallback(() => {
     setNavigationVisible(true);

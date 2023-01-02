@@ -13,5 +13,5 @@ export const useAuth = () => {
     signOut(firebaseAuth);
   };
 
-  return { isAuthenticated, signOut: signOutUser };
+  return { isAuthenticated, signOut: signOutUser, user };
 };

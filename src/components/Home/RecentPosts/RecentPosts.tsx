@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../app/store";
+import { useFetchPosts } from "../../../hooks/post/useFetchPosts";
 import { SingleRecentPost } from "../SingleRecentPost/SingleRecentPost";
 import {
   StyledContainer,
@@ -9,6 +10,7 @@ import {
 } from "./StyledRecentPosts";
 
 export const RecentPosts = () => {
+  const { postsLoading } = useFetchPosts();
   const posts = useSelector((state: RootState) => state.posts.posts);
 
   const renderRecentPosts = () => {
@@ -20,9 +22,11 @@ export const RecentPosts = () => {
       </>
     );
   };
+
   return (
     <StyledContainer>
       <StyledHeader>Recent blog posts</StyledHeader>
+      {postsLoading && <p>Loading posts...</p>}
       <StyledPostsList>{renderRecentPosts()}</StyledPostsList>
     </StyledContainer>
   );

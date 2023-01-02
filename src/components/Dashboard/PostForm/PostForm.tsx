@@ -1,8 +1,11 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { useState } from "react";
+import React, { useState } from "react";
 import * as Yup from "yup";
 import { PostImage } from "./PostImage/PostImage";
 import { StyledContainer } from "./StyledPostForm";
+import { useCreatePost } from "../../../hooks/post/useCreatePost";
+import { ProgressBar } from "../../ProgressBar/ProgressBar";
+import { useRemovePost } from "../../../hooks/post/useRemovePost";
 
 const PostFormSchema = Yup.object().shape({
   title: Yup.string().required("This fiels is required"),
@@ -24,14 +27,7 @@ interface PostFormProps {
   tags?: string;
   shortDesc?: string;
   content?: string;
-}
-
-interface AddEditPostProps {
-  image: string;
-  title: string;
-  tags: string;
-  shortDesc: string;
-  content: string;
+  featured?: boolean;
 }
 
 export const PostForm = ({
@@ -42,28 +38,12 @@ export const PostForm = ({
   tags,
   shortDesc,
   content,
+  featured,
 }: PostFormProps) => {
+  const { createNewPost, uploadProgress } = useCreatePost();
+  const { remove } = useRemovePost();
+
   const [postImage, setPostImage] = useState(image);
-
-  const handleAddPost = ({
-    image,
-    title,
-    tags,
-    shortDesc,
-    content,
-  }: AddEditPostProps) => {
-    console.log("Add post");
-  };
-
-  const handleEditPost = ({
-    image,
-    title,
-    tags,
-    shortDesc,
-    content,
-  }: AddEditPostProps) => {
-    console.log("Edit Post: " + id);
-  };
 
   return (
     <StyledContainer>
@@ -71,36 +51,39 @@ export const PostForm = ({
 
       <Formik
         initialValues={{
-          image: "",
+          image: null,
           title: title || "",
           tags: tags || "",
           shortDesc: shortDesc || "",
           content: content || "",
+          featured: featured || false,
         }}
         validationSchema={PostFormSchema}
         onSubmit={(values, { setSubmitting }) => {
           type === FormType.add &&
-            handleAddPost({
+            createNewPost({
               image: values.image,
               title: values.title,
               tags: values.tags,
               shortDesc: values.shortDesc,
               content: values.content,
-            });
-          type === FormType.edit &&
-            handleEditPost({
-              image: values.image,
-              title: values.title,
-              tags: values.tags,
-              shortDesc: values.shortDesc,
-              content: values.shortDesc,
+              featured: values.featured,
             });
           setSubmitting(false);
         }}
       >
-        {({ isSubmitting }) => (
+        {({ isSubmitting, setFieldValue }) => (
           <Form>
-            {!postImage && <Field type="file" name="image" />}
+            {!postImage && (
+              <input
+                type="file"
+                name="image"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  if (!e.currentTarget.files) return;
+                  setFieldValue("image", e.currentTarget.files[0]);
+                }}
+              />
+            )}
             <label>Title</label>
             <Field type="text" name="title" placeholder="Post title" />
             <ErrorMessage
@@ -136,7 +119,13 @@ export const PostForm = ({
               component="p"
               className="error-message"
             />
-            <button type="submit" disabled={isSubmitting}>
+            {uploadProgress > 0 && <ProgressBar progress={uploadProgress} />}
+            {type === FormType.edit && (
+              <button type="button" onClick={() => remove({ id: id! })}>
+                Remove
+              </button>
+            )}
+            <button type="submit" disabled={uploadProgress > 0 || isSubmitting}>
               {type === FormType.add && "Add post"}
               {type === FormType.edit && "Save changes"}
             </button>
