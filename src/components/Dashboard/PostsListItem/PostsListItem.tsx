@@ -1,15 +1,14 @@
-import { FormControlLabel, Stack, Switch, Typography } from "@mui/material";
+import { Stack, Switch, Typography } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 import { useEditPost } from "../../../hooks/post/useEditPost";
-import { useRemovePost } from "../../../hooks/post/useRemovePost";
 import { Post } from "../../../types/Post";
+import { RemovePostDialog } from "../../RemovePostDialog/RemovePostDialog";
 import {
   StyledContainer,
   StyledDescription,
   StyledFeaturedBadge,
   StyledNavigation,
-  StyledRemovePostButton,
   StyledShortContent,
   StyledTitle,
 } from "./StyledPostsListItem";
@@ -20,7 +19,6 @@ interface Props {
 
 export const PostsListItem = ({ post }: Props) => {
   const { toggleFeaturedPost } = useEditPost();
-  const { remove } = useRemovePost();
   const { id, image, title, shortDesc, featured } = post;
   return (
     <StyledContainer>
@@ -34,12 +32,7 @@ export const PostsListItem = ({ post }: Props) => {
         <Link to={`edit/${id}`} state={{ post }}>
           Edit
         </Link>
-        <StyledRemovePostButton
-          className="remove-button"
-          onClick={() => remove({ id })}
-        >
-          Remove post
-        </StyledRemovePostButton>
+        <RemovePostDialog postId={id} postTitle={title} />
         <Stack direction="row" spacing={1} alignItems="center">
           <Switch
             checked={!!featured}

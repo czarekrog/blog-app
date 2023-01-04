@@ -15,7 +15,7 @@ export const useRemovePost = () => {
 
   const remove = useCallback(
     async ({ id }: RemovePostProps) => {
-      await deleteDoc(doc(firestore, "posts/", "id"));
+      await deleteDoc(doc(firestore, "posts/", id));
       dispatch(removePost(id));
       navigate("/dashboard");
     },
