@@ -4,14 +4,14 @@ import { useAuth } from "../hooks/user/useAuth";
 import { StyledTopSection } from "../routes/Dashboard/StyledDashboard";
 
 export const DashboardLayout = () => {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, isAdmin } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (!isAuthenticated && !isAdmin) {
       navigate("/");
     }
-  }, [isAuthenticated, navigate]);
+  }, [isAdmin, isAuthenticated, navigate]);
 
   return (
     <div>

@@ -20,8 +20,8 @@ export const useSignIn = () => {
   const signInUser = ({ email, password }: SignInProps) => {
     signInWithEmailAndPassword(firebaseAuth, email, password)
       .then(async ({ user }) => {
-        const { name, uid } = await getUserData({ uid: user.uid });
-        dispatch(signIn({ uid, name }));
+        const { name, uid, accessLevel } = await getUserData({ uid: user.uid });
+        dispatch(signIn({ uid, name, accessLevel }));
         navigate("/");
       })
       .catch((error) => {

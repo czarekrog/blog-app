@@ -54,8 +54,8 @@ function App() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(firebaseAuth, async (user) => {
       if (user) {
-        const { uid, name } = await getUserData({ uid: user.uid });
-        dispatch(signIn({ uid, name }));
+        const { uid, name, accessLevel } = await getUserData({ uid: user.uid });
+        dispatch(signIn({ uid, name, accessLevel }));
       } else {
         dispatch(signOut());
       }

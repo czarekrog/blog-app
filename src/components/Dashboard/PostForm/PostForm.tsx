@@ -6,6 +6,7 @@ import { StyledContainer } from "./StyledPostForm";
 import { useCreatePost } from "../../../hooks/post/useCreatePost";
 import { ProgressBar } from "../../ProgressBar/ProgressBar";
 import { useRemovePost } from "../../../hooks/post/useRemovePost";
+import { useEditPost } from "../../../hooks/post/useEditPost";
 
 const PostFormSchema = Yup.object().shape({
   title: Yup.string().required("This fiels is required"),
@@ -42,6 +43,7 @@ export const PostForm = ({
 }: PostFormProps) => {
   const { createNewPost, uploadProgress } = useCreatePost();
   const { remove } = useRemovePost();
+  const { editPost } = useEditPost();
 
   const [postImage, setPostImage] = useState(image);
 
@@ -69,6 +71,7 @@ export const PostForm = ({
               content: values.content,
               featured: values.featured,
             });
+          type === FormType.edit && editPost();
           setSubmitting(false);
         }}
       >

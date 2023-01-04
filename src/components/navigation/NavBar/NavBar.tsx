@@ -8,7 +8,7 @@ import {
 } from "./StyledNavBar";
 
 export const NavBar = () => {
-  const { isAuthenticated, signOut } = useAuth();
+  const { isAuthenticated, signOut, isAdmin } = useAuth();
 
   const handleSignOut = useCallback(() => {
     signOut();
@@ -48,9 +48,11 @@ export const NavBar = () => {
               </>
             ) : (
               <>
-                <li>
-                  <Link to="/dashboard">Dashboard</Link>
-                </li>
+                {isAdmin && (
+                  <li>
+                    <Link to="/dashboard">Dashboard</Link>
+                  </li>
+                )}
                 <li className="signOut" onClick={handleSignOut}>
                   Sign Out
                 </li>

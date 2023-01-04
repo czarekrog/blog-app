@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import checkUsernameAvailable from "../../utils/checkUsernameAvailable";
 import { useAlert } from "../alert/useAlert";
 import { AlertType } from "../../components/Alert/Alert";
+import { UserAccessLevel } from "../../types/UserAccessLevel";
 
 interface SignUpProps {
   email: string;
@@ -22,7 +23,11 @@ export const useSignUp = () => {
     if (usernameAvailable) {
       createUserWithEmailAndPassword(firebaseAuth, email, password)
         .then(({ user }) => {
-          setDoc(doc(firestore, "users/", user.uid), { uid: user.uid, name });
+          setDoc(doc(firestore, "users/", user.uid), {
+            uid: user.uid,
+            name,
+            accessLevel: UserAccessLevel.READER,
+          });
           navigate("/");
         })
         .catch((error) => {

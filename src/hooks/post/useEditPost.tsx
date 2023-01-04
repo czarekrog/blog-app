@@ -12,6 +12,8 @@ interface ToggleFeaturedPostProps {
 export const useEditPost = () => {
   const dispatch = useDispatch();
 
+  const editPost = () => {};
+
   const toggleFeaturedPost = async ({
     id,
     featured,
@@ -20,5 +22,5 @@ export const useEditPost = () => {
     await updateDoc(ref, { featured: !featured });
     dispatch(toggleFeatured(id));
   };
-  return { toggleFeaturedPost };
+  return { toggleFeaturedPost, editPost };
 };
