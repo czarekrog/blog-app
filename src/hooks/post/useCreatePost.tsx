@@ -67,6 +67,7 @@ export const useCreatePost = () => {
                 author: user?.name!,
                 date: new Date().getTime(),
                 featured: featured,
+                comments: [],
               })
             );
           })

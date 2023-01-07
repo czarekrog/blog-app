@@ -1,3 +1,5 @@
+import { PostComment } from "./PostComment";
+
 export interface Post {
   id: string;
   title: string;
@@ -8,4 +10,5 @@ export interface Post {
   author: string;
   date: number; //in milliseconds
   featured: boolean;
+  comments: PostComment[];
 }

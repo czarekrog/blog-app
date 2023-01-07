@@ -4,9 +4,15 @@ import { Post } from "../types/Post";
 import { RootState } from "../app/store";
 import { doc, setDoc } from "firebase/firestore";
 import { firestore } from "../libs/firebase";
+import { PostComment } from "../types/PostComment";
 
 export interface PostsState {
   posts: Post[];
+}
+
+interface CommentPayload {
+  postId: string;
+  comment: PostComment;
 }
 
 const initialState: PostsState = {
@@ -34,6 +40,18 @@ export const postsSlice = createSlice({
         }
       });
     },
+    addComment: (state, action: PayloadAction<CommentPayload>) => {
+      state.posts = state.posts.map((post) => {
+        if (post.id === action.payload.postId) {
+          return {
+            ...post,
+            comments: [...post.comments, action.payload.comment],
+          };
+        } else {
+          return post;
+        }
+      });
+    },
     removePost: (state, action: PayloadAction<string>) => {
       state.posts = state.posts.filter((post) => post.id !== action.payload);
     },
@@ -45,10 +63,14 @@ export const {
   createPost,
   updatePost,
   toggleFeatured,
+  addComment,
   removePost,
 } = postsSlice.actions;
 
 export const selectPosts = (state: RootState) => state.posts.posts;
+
+export const selectSinglePost = (state: RootState, postId: string) =>
+  state.posts.posts.find((post) => post.id === postId);
 
 export const selectFeaturedPosts = (state: RootState) =>
   state.posts.posts.filter((post) => post.featured === true);

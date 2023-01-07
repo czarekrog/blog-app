@@ -17,6 +17,7 @@ import { Dashboard } from "./routes/Dashboard/Dashboard";
 import { DashboardLayout } from "./layout/DashboardLayout";
 import { AddNew } from "./routes/Dashboard/AddNew/AddNew";
 import { EditPost } from "./routes/Dashboard/EditPost/EditPost";
+import { useFetchPosts } from "./hooks/post/useFetchPosts";
 
 const router = createBrowserRouter([
   {
@@ -35,7 +36,10 @@ const router = createBrowserRouter([
       { path: "/sign-in", element: <SignIn /> },
       { path: "/sign-up", element: <SignUp /> },
       { path: "/forgot-password", element: <ForgotPassword /> },
-      { path: "/post/:id", element: <Post /> },
+      {
+        path: "/post/:id",
+        element: <Post />,
+      },
       {
         path: "/dashboard",
         element: <DashboardLayout />,
@@ -51,6 +55,8 @@ const router = createBrowserRouter([
 
 function App() {
   const dispatch = useDispatch();
+  const { fetch } = useFetchPosts();
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(firebaseAuth, async (user) => {
       if (user) {
@@ -63,6 +69,10 @@ function App() {
 
     return unsubscribe;
   }, [dispatch]);
+
+  useEffect(() => {
+    fetch();
+  }, [fetch]);
 
   return (
     <div className="App">
