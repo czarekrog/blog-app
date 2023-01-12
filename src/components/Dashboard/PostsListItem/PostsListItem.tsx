@@ -4,9 +4,12 @@ import { Link } from "react-router-dom";
 import { useEditPost } from "../../../hooks/post/useEditPost";
 import { Post } from "../../../types/Post";
 import { RemovePostDialog } from "../../RemovePostDialog/RemovePostDialog";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
 import {
   StyledContainer,
   StyledDescription,
+  StyledEditRemoveSection,
   StyledFeaturedBadge,
   StyledNavigation,
   StyledShortContent,
@@ -29,10 +32,12 @@ export const PostsListItem = ({ post }: Props) => {
         <StyledDescription>{shortDesc}</StyledDescription>
       </StyledShortContent>
       <StyledNavigation>
-        <Link to={`edit/${id}`} state={{ post }}>
-          Edit
-        </Link>
-        <RemovePostDialog postId={id} postTitle={title} />
+        <StyledEditRemoveSection>
+          <Link to={`edit/${id}`} state={{ post }}>
+            <FontAwesomeIcon icon={faPen} className="icon" />
+          </Link>
+          <RemovePostDialog postId={id} postTitle={title} />
+        </StyledEditRemoveSection>
         <Stack direction="row" spacing={1} alignItems="center">
           <Switch
             checked={!!featured}

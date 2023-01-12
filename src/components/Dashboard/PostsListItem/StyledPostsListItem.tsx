@@ -47,7 +47,7 @@ export const StyledNavigation = styled.div`
   width: 125px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   border-left: 1px solid #eee;
 
@@ -68,15 +68,17 @@ export const StyledNavigation = styled.div`
   }
 `;
 
-export const StyledRemovePostButton = styled.button`
-  background: none;
-  font-size: 14px;
-  font-weight: 600;
-  background-color: none;
-  border: none;
-  cursor: pointer;
+export const StyledEditRemoveSection = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  .icon {
+    font-size: 22px;
+    color: #393939;
+  }
 
-  &:hover {
-    text-decoration: underline;
+  .fa-trash-can {
+    color: red;
+    cursor: pointer;
   }
 `;

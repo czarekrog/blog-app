@@ -83,6 +83,7 @@ export const PostForm = ({
                 name="image"
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   if (!e.currentTarget.files) return;
+                  setPostImage(URL.createObjectURL(e.currentTarget.files[0]));
                   setFieldValue("image", e.currentTarget.files[0]);
                 }}
               />
@@ -123,11 +124,6 @@ export const PostForm = ({
               className="error-message"
             />
             {uploadProgress > 0 && <ProgressBar progress={uploadProgress} />}
-            {type === FormType.edit && (
-              <button type="button" onClick={() => remove({ id: id! })}>
-                Remove
-              </button>
-            )}
             <button type="submit" disabled={uploadProgress > 0 || isSubmitting}>
               {type === FormType.add && "Add post"}
               {type === FormType.edit && "Save changes"}

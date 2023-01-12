@@ -6,7 +6,8 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useRemovePost } from "../../hooks/post/useRemovePost";
-import { StyledRemovePostButton } from "../Dashboard/PostsListItem/StyledPostsListItem";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
 
 interface Props {
   postId: string;
@@ -32,9 +33,11 @@ export const RemovePostDialog = ({ postId, postTitle }: Props) => {
 
   return (
     <div>
-      <StyledRemovePostButton onClick={handleClickOpen}>
-        Remove post
-      </StyledRemovePostButton>
+      <FontAwesomeIcon
+        icon={faTrashCan}
+        onClick={handleClickOpen}
+        className="icon"
+      />
       <Dialog
         open={open}
         onClose={handleClose}
