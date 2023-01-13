@@ -5,8 +5,8 @@ import { PostImage } from "./PostImage/PostImage";
 import { StyledContainer } from "./StyledPostForm";
 import { useCreatePost } from "../../../hooks/post/useCreatePost";
 import { ProgressBar } from "../../ProgressBar/ProgressBar";
-import { useRemovePost } from "../../../hooks/post/useRemovePost";
 import { useEditPost } from "../../../hooks/post/useEditPost";
+import { useUploadImage } from "../../../hooks/post/useUploadImage";
 
 const PostFormSchema = Yup.object().shape({
   title: Yup.string().required("This fiels is required"),
@@ -41,27 +41,46 @@ export const PostForm = ({
   content,
   featured,
 }: PostFormProps) => {
-  const { createNewPost, uploadProgress } = useCreatePost();
-  const { remove } = useRemovePost();
-  const { editPost } = useEditPost();
+  const { createNewPost, uploadProgress: newPostImageUplodProgress } =
+    useCreatePost();
+  const { editPost, uploadProgress: editPostImageUploadProgress } =
+    useEditPost();
+
+  const uploadProgress =
+    type === FormType.add
+      ? newPostImageUplodProgress
+      : editPostImageUploadProgress;
 
   const [postImage, setPostImage] = useState(image);
+
+  const initialValues = {
+    image: null,
+    title: title || "",
+    tags: tags || "",
+    shortDesc: shortDesc || "",
+    content: content || "",
+    featured: featured || false,
+  };
 
   return (
     <StyledContainer>
       {postImage && <PostImage src={postImage} setPostImage={setPostImage} />}
 
       <Formik
-        initialValues={{
-          image: null,
-          title: title || "",
-          tags: tags || "",
-          shortDesc: shortDesc || "",
-          content: content || "",
-          featured: featured || false,
-        }}
+        initialValues={initialValues}
         validationSchema={PostFormSchema}
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit={(values, { setSubmitting, setFieldError }) => {
+          //Manually validating image field while adding new post
+          if (type === FormType.add && !values.image) {
+            setFieldError("image", "Image is required");
+            return;
+          }
+
+          //Manually validating image field while updating existing post
+          if (type === FormType.edit && !postImage && !values.image) {
+            setFieldError("image", "Image is required");
+          }
+
           type === FormType.add &&
             createNewPost({
               image: values.image,
@@ -71,7 +90,8 @@ export const PostForm = ({
               content: values.content,
               featured: values.featured,
             });
-          type === FormType.edit && editPost();
+          //Here we check if form type is edit, and if it is then we know that post has an id
+          type === FormType.edit && editPost(id!, initialValues, values);
           setSubmitting(false);
         }}
       >
@@ -88,6 +108,11 @@ export const PostForm = ({
                 }}
               />
             )}
+            <ErrorMessage
+              name="image"
+              component="p"
+              className="error-message"
+            />
             <label>Title</label>
             <Field type="text" name="title" placeholder="Post title" />
             <ErrorMessage

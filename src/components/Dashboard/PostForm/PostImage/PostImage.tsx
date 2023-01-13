@@ -16,7 +16,7 @@ export const PostImage = ({ src, setPostImage }: Props) => {
     setShowInnerContainer(false);
   };
   const handleClick = () => {
-    setPostImage("");
+    setPostImage(undefined);
   };
 
   return (

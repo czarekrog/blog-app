@@ -12,6 +12,7 @@ export const EditPost = () => {
   return (
     <StyledContainer>
       <StyledFormContainer>
+        <h1>Edit Post</h1>
         <PostForm
           type={FormType.edit}
           id={post.id}

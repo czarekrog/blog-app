@@ -15,6 +15,11 @@ interface CommentPayload {
   comment: PostComment;
 }
 
+interface updatePayload {
+  postId: string;
+  updates: object;
+}
+
 const initialState: PostsState = {
   posts: [],
 };
@@ -27,10 +32,17 @@ export const postsSlice = createSlice({
       state.posts = action.payload;
     },
     createPost: (state, action: PayloadAction<Post>) => {
-      setDoc(doc(firestore, "posts/", action.payload.id), action.payload);
       state.posts.push(action.payload);
     },
-    updatePost: (state, action: PayloadAction<Post>) => {},
+    updatePost: (state, action: PayloadAction<updatePayload>) => {
+      state.posts = state.posts.map((post) => {
+        if (post.id === action.payload.postId) {
+          return { ...post, ...action.payload.updates };
+        } else {
+          return post;
+        }
+      });
+    },
     toggleFeatured: (state, action: PayloadAction<string>) => {
       state.posts = state.posts.map((post) => {
         if (post.id === action.payload) {
