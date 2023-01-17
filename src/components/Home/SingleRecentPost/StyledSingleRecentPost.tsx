@@ -1,16 +1,27 @@
 import styled from "@emotion/styled";
-import { borderRadius, colors, fontWeight } from "../../../constants/styling";
+import {
+  borderRadius,
+  breakpoints,
+  colors,
+  fontWeight,
+} from "../../../constants/styling";
 
 export const linkStyles = {
   color: `${colors.primary}`,
   textDecoration: "none",
 };
 
-export const StyledContainer = styled.div``;
+export const StyledContainer = styled.div`
+  width: 100%;
+  @media (max-width: ${breakpoints.mobile}) {
+    height: auto;
+  }
+`;
 
 export const StyledPostPhoto = styled.img`
   width: 100%;
   height: 220px;
+  object-fit: cover;
   border-radius: ${borderRadius.medium};
 `;
 

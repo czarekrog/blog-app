@@ -11,6 +11,7 @@ import {
   StyledDescription,
   StyledEditRemoveSection,
   StyledFeaturedBadge,
+  StyledImageAndDescription,
   StyledNavigation,
   StyledShortContent,
   StyledTitle,
@@ -25,12 +26,14 @@ export const PostsListItem = ({ post }: Props) => {
   const { id, image, title, shortDesc, featured } = post;
   return (
     <StyledContainer>
-      <img src={image} alt="Post cover" />
-      <StyledShortContent>
-        {featured && <StyledFeaturedBadge>FEATURED</StyledFeaturedBadge>}
-        <StyledTitle>{title}</StyledTitle>
-        <StyledDescription>{shortDesc}</StyledDescription>
-      </StyledShortContent>
+      <StyledImageAndDescription>
+        <img src={image} alt="Post cover" />
+        <StyledShortContent>
+          {featured && <StyledFeaturedBadge>FEATURED</StyledFeaturedBadge>}
+          <StyledTitle>{title}</StyledTitle>
+          <StyledDescription>{shortDesc}</StyledDescription>
+        </StyledShortContent>
+      </StyledImageAndDescription>
       <StyledNavigation>
         <StyledEditRemoveSection>
           <Link to={`edit/${id}`} state={{ post }}>
@@ -38,13 +41,13 @@ export const PostsListItem = ({ post }: Props) => {
           </Link>
           <RemovePostDialog postId={id} postTitle={title} />
         </StyledEditRemoveSection>
-        <Stack direction="row" spacing={1} alignItems="center">
+        <Stack direction="column" spacing={1} alignItems="center">
+          <Typography fontSize={14}>Featured</Typography>
           <Switch
             checked={!!featured}
             onChange={() => toggleFeaturedPost({ id, featured })}
             size="small"
           />
-          <Typography className="featured-label">Featured</Typography>
         </Stack>
       </StyledNavigation>
     </StyledContainer>

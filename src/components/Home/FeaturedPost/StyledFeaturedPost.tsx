@@ -1,5 +1,10 @@
 import styled from "@emotion/styled";
-import { colors, fontWeight, spacing } from "../../../constants/styling";
+import {
+  breakpoints,
+  colors,
+  fontWeight,
+  spacing,
+} from "../../../constants/styling";
 
 interface FeaturedPostProps {
   bgImage: string;
@@ -15,7 +20,7 @@ export const StyledFeaturedPost = styled.div<FeaturedPostProps>`
   background: url(${(props) => props.bgImage}) rgba(0, 0, 0, 0.3);
   background-size: cover;
   background-blend-mode: multiply;
-  height: 568px;
+  height: 100%;
   padding: ${spacing.large};
   justify-content: flex-start;
   align-items: flex-end;
@@ -29,6 +34,10 @@ export const StyledFeaturedSpan = styled.p`
   font-size: 18px;
   color: ${colors.light};
   text-decoration: underline;
+  @media (max-width: ${breakpoints.mobile}) {
+    margin-left: 16px;
+    font-size: 12px;
+  }
 `;
 
 export const StyledTitleSpan = styled.span`
@@ -38,6 +47,10 @@ export const StyledTitleSpan = styled.span`
   margin-bottom: 8px;
   color: ${colors.light};
   margin-left: 45px;
+  @media (max-width: ${breakpoints.mobile}) {
+    margin-left: 16px;
+    font-size: 20px;
+  }
 `;
 
 export const StyledDescriptionSpan = styled.span`
@@ -46,5 +59,9 @@ export const StyledDescriptionSpan = styled.span`
   font-weight: ${fontWeight.medium};
   color: ${colors.light};
   margin-left: 45px;
-  margin-bottom: 16px;
+  margin-bottom: 50px;
+  @media (max-width: ${breakpoints.mobile}) {
+    margin-left: 16px;
+    font-size: 14px;
+  }
 `;

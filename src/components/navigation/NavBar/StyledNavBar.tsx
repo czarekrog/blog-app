@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 
 import {
   borderRadius,
+  breakpoints,
   colors,
   fontSize,
   fontWeight,
@@ -31,8 +32,49 @@ export const StyledContainerDiv = styled.div`
   padding-right: ${spacing.large};
   width: ${sizes.mainContainerWidth};
   max-width: ${sizes.mainContainerMaxWidth};
-  & > div {
-    flex: 1;
+  @media (max-width: ${breakpoints.mobile}) {
+    flex-direction: column;
+    width: auto;
+    align-items: stretch;
+  }
+
+  .fa-bars {
+    font-size: 24px;
+    display: none;
+    @media (max-width: ${breakpoints.mobile}) {
+      display: block;
+    }
+  }
+`;
+
+export const StyledLogoSection = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const StyledLogo = styled.img`
+  height: 45px;
+`;
+
+export const StyledNavigationSection = styled.div`
+  flex: 2;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  transition: opacity 0.3s;
+  @media (max-width: ${breakpoints.mobile}) {
+    opacity: 0;
+    flex-direction: column;
+    background-color: white;
+    align-items: center;
+    visibility: hidden;
+  }
+  &.opened {
+    opacity: 1;
+    visibility: visible;
   }
 `;
 
@@ -75,6 +117,9 @@ export const StyledNavList = styled.ul`
     display: flex;
     align-items: center;
     justify-content: space-around;
+    @media (max-width: ${breakpoints.mobile}) {
+      flex-direction: column;
+    }
   }
 
   &.userNavigation {

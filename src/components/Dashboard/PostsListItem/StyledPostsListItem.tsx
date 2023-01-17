@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakpoints } from "../../../constants/styling";
 
 export const StyledContainer = styled.div`
   border: 1px solid #eee;
@@ -9,16 +10,33 @@ export const StyledContainer = styled.div`
   padding: 8px;
   box-sizing: border-box;
   border-radius: 5px;
+`;
+
+export const StyledImageAndDescription = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  margin-right: 8px;
   & > img {
     width: 150px;
-    margin-right: 8px;
+    height: 100px;
     border-radius: 5px;
+    object-fit: cover;
+    @media (max-width: ${breakpoints.mobile}) {
+      width: 100%;
+    }
+  }
+  @media (max-width: ${breakpoints.mobile}) {
+    flex-direction: column;
   }
 `;
 
 export const StyledShortContent = styled.div`
   align-self: flex-start;
   flex: 1;
+  box-sizing: border-box;
+  padding: 0 8px;
 `;
 
 export const StyledFeaturedBadge = styled.div`
@@ -29,6 +47,10 @@ export const StyledFeaturedBadge = styled.div`
   font-size: 10px;
   font-weight: 700;
   width: fit-content;
+  margin-bottom: 4px;
+  @media (max-width: ${breakpoints.mobile}) {
+    margin-top: 4px;
+  }
 `;
 
 export const StyledTitle = styled.p`
@@ -44,10 +66,10 @@ export const StyledDescription = styled.p`
 `;
 
 export const StyledNavigation = styled.div`
-  width: 125px;
+  width: 80px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   border-left: 1px solid #eee;
 
@@ -62,9 +84,9 @@ export const StyledNavigation = styled.div`
     text-decoration: underline;
   }
 
-  & > p.featured-label {
-    font-size: 10px !important;
-    font-weight: 600;
+  @media (max-width: ${breakpoints.mobile}) {
+    justify-content: center;
+    gap: 24px;
   }
 `;
 

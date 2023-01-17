@@ -1,26 +1,48 @@
-import React, { useCallback } from "react";
-import { Link } from "react-router-dom";
+import React, { useCallback, useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../../../hooks/user/useAuth";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import {
   StyledContainerDiv,
+  StyledLogo,
+  StyledLogoSection,
   StyledNavBarDiv,
+  StyledNavigationSection,
   StyledNavList,
 } from "./StyledNavBar";
 
 export const NavBar = () => {
   const { isAuthenticated, signOut, isAdmin } = useAuth();
+  const location = useLocation();
 
   const handleSignOut = useCallback(() => {
     signOut();
   }, [signOut]);
 
+  const handleMenuToggle = () => {
+    const navSection = document.getElementById("navSection");
+    navSection?.classList.contains("opened")
+      ? navSection?.classList.remove("opened")
+      : navSection?.classList.add("opened");
+  };
+
+  //closing mobile menu after location change
+  useEffect(() => {
+    const navSection = document.getElementById("navSection");
+    navSection?.classList.remove("opened");
+  }, [location]);
+
   return (
     <StyledNavBarDiv>
       <StyledContainerDiv>
-        <div>
-          <span>Logo</span>
-        </div>
-        <div>
+        <StyledLogoSection>
+          <Link to="/">
+            <StyledLogo src="/logo.png" alt="Blog logo" />
+          </Link>
+          <FontAwesomeIcon icon={faBars} onClick={handleMenuToggle} />
+        </StyledLogoSection>
+        <StyledNavigationSection id="navSection">
           <StyledNavList className="mainNavigation">
             <li>
               <Link to="/">Home</Link>
@@ -32,8 +54,6 @@ export const NavBar = () => {
               <Link to="/contact">Contact</Link>
             </li>
           </StyledNavList>
-        </div>
-        <div>
           <StyledNavList className="userNavigation">
             {!isAuthenticated ? (
               <>
@@ -59,7 +79,7 @@ export const NavBar = () => {
               </>
             )}
           </StyledNavList>
-        </div>
+        </StyledNavigationSection>
       </StyledContainerDiv>
     </StyledNavBarDiv>
   );

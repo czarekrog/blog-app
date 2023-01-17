@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { borderRadius, colors } from "../../../constants/styling";
+import { borderRadius, colors, breakpoints } from "../../../constants/styling";
 
 interface NavigationProps {
   visible: boolean;
@@ -14,6 +14,9 @@ export const StyledFeaturedPostsDiv = styled.div`
   height: 600px;
   overflow: hidden;
   position: relative;
+  @media (max-width: ${breakpoints.mobile}) {
+    height: 300px;
+  }
 `;
 
 export const StyledNavigationLeft = styled.div<NavigationProps>`

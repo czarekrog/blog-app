@@ -39,3 +39,7 @@ export const borderRadius = {
   medium: "10px",
   big: "20px",
 };
+
+export const breakpoints = {
+  mobile: "600px",
+};
