@@ -2,7 +2,7 @@ import { MainLayout } from "./layout/MainLayout";
 import { createHashRouter, RouterProvider } from "react-router-dom";
 import { Home } from "./routes/Home";
 import { About } from "./routes/About";
-import { Contact } from "./routes/Contact";
+import { Contact } from "./routes/Contact/Contact";
 import { SignIn } from "./routes/SignIn/SignIn";
 import { SignUp } from "./routes/SignUp/SignUp";
 import { Post } from "./routes/Post/Post";
