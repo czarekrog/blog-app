@@ -1,5 +1,5 @@
 import { MainLayout } from "./layout/MainLayout";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import { Home } from "./routes/Home";
 import { About } from "./routes/About";
 import { Contact } from "./routes/Contact";
@@ -19,7 +19,7 @@ import { AddNew } from "./routes/Dashboard/AddNew/AddNew";
 import { EditPost } from "./routes/Dashboard/EditPost/EditPost";
 import { useFetchPosts } from "./hooks/post/useFetchPosts";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <MainLayout />,
