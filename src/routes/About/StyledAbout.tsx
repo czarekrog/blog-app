@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakpoints } from "../../constants/styling";
 
 export const StyledAbout = styled.div`
   text-align: center;
@@ -15,6 +16,9 @@ export const StyledHeaderImage = styled.img`
   height: 400px;
   object-fit: cover;
   object-position: center;
+  @media (max-width: ${breakpoints.mobile}) {
+    height: 200px;
+  }
 `;
 
 export const StyledSignature = styled.p`
