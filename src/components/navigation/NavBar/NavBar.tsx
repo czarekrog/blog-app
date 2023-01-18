@@ -38,7 +38,10 @@ export const NavBar = () => {
       <StyledContainerDiv>
         <StyledLogoSection>
           <Link to="/">
-            <StyledLogo src="/logo.png" alt="Blog logo" />
+            <StyledLogo
+              src={process.env.PUBLIC_URL + "/logo.png"}
+              alt="Blog logo"
+            />
           </Link>
           <FontAwesomeIcon icon={faBars} onClick={handleMenuToggle} />
         </StyledLogoSection>
