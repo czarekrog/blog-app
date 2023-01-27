@@ -6,7 +6,11 @@
 ## About the project
 
 ### Short description
-This is a Blog App
+This is a Blog App that has the following functionalities:
+- Fetching posts from Firestore Database
+- Commenting posts [All signed in users]
+- Creating / Editing / Removing blog posts [Available to admin]
+- Marking posts as featured [Available to admin]
 
 ### The purpose of the project
 This project was created in order to present my coding skills.
@@ -16,7 +20,7 @@ This project was created in order to present my coding skills.
 - React
 - Redux Toolkit
 - React Router
-- Firebase
+- Firebase (Firestore Database, Firebase Storage)
 - Formik
 - Emotion
 - Moment
