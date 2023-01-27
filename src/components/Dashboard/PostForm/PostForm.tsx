@@ -1,12 +1,11 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import * as Yup from "yup";
 import { PostImage } from "./PostImage/PostImage";
 import { StyledContainer } from "./StyledPostForm";
 import { useCreatePost } from "../../../hooks/post/useCreatePost";
 import { ProgressBar } from "../../ProgressBar/ProgressBar";
 import { useEditPost } from "../../../hooks/post/useEditPost";
-import { useUploadImage } from "../../../hooks/post/useUploadImage";
 
 const PostFormSchema = Yup.object().shape({
   title: Yup.string().required("This fiels is required"),

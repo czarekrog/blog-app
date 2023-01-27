@@ -1,6 +1,10 @@
 import styled from "@emotion/styled";
-import { url } from "inspector";
-import { borderRadius, colors, fontWeight } from "../../constants/styling";
+import {
+  borderRadius,
+  breakpoints,
+  colors,
+  fontWeight,
+} from "../../constants/styling";
 
 interface StyledHeadingProps {
   bgImage: string;
@@ -23,6 +27,9 @@ export const StyledHeading = styled.div<StyledHeadingProps>`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media (max-width: ${breakpoints.mobile}) {
+    height: 200px;
+  }
 `;
 
 export const StyledTitle = styled.h1`
@@ -32,6 +39,10 @@ export const StyledTitle = styled.h1`
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 18px;
+    text-align: center;
+  }
 `;
 
 export const StyledAuthorAndDate = styled.span`
@@ -55,10 +66,9 @@ export const StyledSeparatorLine = styled.div`
 `;
 
 export const StyledContent = styled.div`
-  font-size: 18px;
-  &::first-letter {
-    text-transform: uppercase;
-    font-size: 48px;
-    font-weight: ${fontWeight.bold};
+  pre {
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    white-space: pre-wrap;
   }
 `;

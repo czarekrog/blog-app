@@ -47,7 +47,9 @@ export const Post = () => {
           {getReadTime() > 1.5 ? "minutes" : "minute"}
         </StyledEstimateTimeParagraph>
         <StyledSeparatorLine />
-        <StyledContent>{post.content}</StyledContent>
+        <StyledContent>
+          <pre>{post.content}</pre>
+        </StyledContent>
         {isAuthenticated && <AddComment postId={post.id} />}
         <CommentsList comments={post.comments} />
       </StyledContainer>
