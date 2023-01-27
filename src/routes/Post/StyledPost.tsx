@@ -35,13 +35,13 @@ export const StyledHeading = styled.div<StyledHeadingProps>`
 export const StyledTitle = styled.h1`
   font-size: 30px;
   font-weight: ${fontWeight.bold};
-  margin-bottom: 16px;
+  margin: 16px;
+  text-align: center;
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
   @media (max-width: ${breakpoints.mobile}) {
     font-size: 18px;
-    text-align: center;
   }
 `;
 
